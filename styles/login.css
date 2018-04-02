@@ -1,0 +1,13 @@
+fieldset {
+background-color: #7fc9ff;}
+
+body {
+    font-family: Verdana;
+}
+
+label{
+    text-align: right;
+}
+fieldset {
+    border: solid 2px black;
+}
