@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['errorMessage'] = ' ';
 
-$mysqli = new mysqli('localhost', 'root', 'secret', 'electoralapp');
+$mysqli = new mysqli('team02electionsim.cd0yrfnixnjv.us-east-2.rds.amazonaws.com', 'Team02Member', 'secret', 'Team02ElectionSim');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $mysqli->real_escape_string($_SESSION['username']);
