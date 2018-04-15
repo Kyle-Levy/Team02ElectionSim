@@ -55,6 +55,8 @@ $mysqli = new mysqli('team02electionsim.cd0yrfnixnjv.us-east-2.rds.amazonaws.com
 
                         <input type ="submit" value ="Login" id = "loginButton">
                         </span>
+
+                        <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
         </form>
 	<p id="tester"></p>

@@ -18,6 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($newPass == $newPassVerify) {
             $changePassword = "UPDATE users SET password='$newPass' WHERE username='$username'";
             $mysqli->query($changePassword);
+            header("location: welcome.php");
         } else {
             $_SESSION['errorMessage'] = 'New Passwords Did Not Match';
         }

@@ -4,8 +4,13 @@ $_SESSION['message'] = ' ';
 
 $mysqli = new mysqli('team02electionsim.cd0yrfnixnjv.us-east-2.rds.amazonaws.com', 'Team02Member', 'secret', 'Team02ElectionSim');
 
+require_once ('../PHPMailer/PHPMailerAutoload.php');
+
+
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //If passwords are equal, and the emails are equal
+
 		if(($_POST['pass'] == $_POST['verifyPass']) && ($_POST['emailAddress'] == $_POST['verifyEmailAddress'])){
 
                 $firstname = $mysqli->real_escape_string($_POST['firstName']);
@@ -33,8 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 }
 				if($usernameResult->num_rows == 0 && $emailResult->num_rows == 0){
 				    //Username and email not taken
-                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum)" .
-                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0)";
+                    $num = rand(100000,999999);
+                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum, resetCode)" .
+                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, $num )";
 
                     if($mysqli->query($insertStatement) === true){
                         $_SESSION['message'] = 'Registration successful! Added $username to the database!';
