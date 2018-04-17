@@ -75,9 +75,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				<label>Name:</label>
 					<input class="names"  type="text" name="firstName" size="30" maxlength="30" placeholder="First" required>
 					<input class="names"  type="text" name="lastName" size="30" maxlength="30" placeholder="Last" required>
-				
-				
-				<label>Email:</label>
+
+                <label>Gender:</label>
+
+                <label>Home Address:</label>
+
+                <label>Phone Number:</label>
+
+                <label>ID:</label>
+
+                <label>Social Security:</label>
+
+                <label>Political Party:</label>
+
+                    <select id="politicalParty" name="politicalAffiliation">
+                        <option value="Democratic">Democratic Party</option>
+                        <option value="Republican">Republican Party</option>
+                        <option value="Libertarian">Libertarian Party</option>
+                        <option value="Green">Green Party</option>
+                        <option value="Constitution">Constitution Party</option>
+                    </select>
+
+                    <label>Email:</label>
 					<input class="fields" type="email" name="emailAddress" size="30" maxlength="30" required>
 				
 				<label>Verify Email:</label>
@@ -92,7 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			
 				<label>Verify Password:</label>
 					<input class="fields" type="password" name="verifyPass" size="30" maxlength="30" required>
-					
+
 					<input type ="submit" value ="Register">
 					
 					

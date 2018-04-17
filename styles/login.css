@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+    background-color: #e5d0cc;
+    font-family: 'Ubuntu', sans-serif;}
+
 fieldset {
 background-color: #7fc9ff;}
 
