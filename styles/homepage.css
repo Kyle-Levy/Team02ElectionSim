@@ -16,6 +16,17 @@ body{
     display:none;
 }
 
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 h2{
     color: #172121;
     text-align: center;
@@ -23,7 +34,6 @@ h2{
 
 label{
     color: #172121;
-    display: block;
     margin: 10px 0 10px 0;
 }
 
