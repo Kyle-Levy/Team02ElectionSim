@@ -33,6 +33,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mysqli->query($electionCandidateTable);
         }
 
+        for($i = 0; $i < count($_POST['precinct']); $i++){
+            $precinct = $_POST['precinct'][$i];
+            $electionPrecinctTable = "INSERT INTO electionPrecinct (electionID, precinct)" . "VALUES ('$electionID', '$precinct')";
+
+            if(!$mysqli->query($electionPrecinctTable)){
+                $_SESSION['message'] = "Query could not be inserted into electionPrecinct table";
+            }
+        }
+
     } else {
         $_SESSION['message'] = "Election could not be added to election table";
     }
@@ -54,6 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 <div id = "page">
+    <p><?=$_SESSION['message']?></p>
     <div>Create an election</div>
     <br>
     <p id="roleNum"><?= $_SESSION['role']?></p>
