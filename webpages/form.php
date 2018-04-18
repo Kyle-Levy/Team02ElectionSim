@@ -17,6 +17,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		        $lastname = $mysqli->real_escape_string($_POST['lastName']);
 				$username = $mysqli->real_escape_string($_POST['username']);
 
+				//yyyy-mm-dd
+                $bday= $mysqli->real_escape_string($_POST['bday']);
+                $gender = $mysqli->real_escape_string($_POST['gender']);
+                $address = $mysqli->real_escape_string($_POST['address1']);
+                $address .= ' ' . $mysqli->real_escape_string($_POST['address2']);
+                $city = $mysqli->real_escape_string($_POST['city']);
+                $state = $mysqli->real_escape_string($_POST['state']);
+                $zip = $mysqli->real_escape_string($_POST['zip']);
+                $id = $mysqli->real_escape_string($_POST['id']);
+                $phone = $mysqli->real_escape_string($_POST['phone']);
+                $social = $mysqli->real_escape_string($_POST['social']);
+                $politicalAffiliation = $mysqli->real_escape_string($_POST['politicalAffiliation']);
+
+
 				$email = $mysqli->real_escape_string($_POST['emailAddress']);
 				$pass = md5($_POST['pass']);
 
@@ -39,8 +53,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				if($usernameResult->num_rows == 0 && $emailResult->num_rows == 0){
 				    //Username and email not taken
                     $num = rand(100000,999999);
-                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum, resetCode)" .
-                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, $num )";
+                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum, resetCode,birthday, gender, address, city, state, idNum, social, politicalParty, votingStatus)" .
+                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, '$num', '$bday', '$gender', '$address', '$city', '$state', '$id', '$social', '$politicalAffiliation', 0)";
 
                     if($mysqli->query($insertStatement) === true){
                         $_SESSION['message'] = 'Registration successful! Added $username to the database!';
