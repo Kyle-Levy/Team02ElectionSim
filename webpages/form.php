@@ -13,10 +13,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 		if(($_POST['pass'] == $_POST['verifyPass']) && ($_POST['emailAddress'] == $_POST['verifyEmailAddress'])){
 
+		        //Grab all of the information from the form.
                 $firstname = $mysqli->real_escape_string($_POST['firstName']);
 		        $lastname = $mysqli->real_escape_string($_POST['lastName']);
 				$username = $mysqli->real_escape_string($_POST['username']);
-
 				//yyyy-mm-dd
                 $bday= $mysqli->real_escape_string($_POST['bday']);
                 $gender = $mysqli->real_escape_string($_POST['gender']);
@@ -29,15 +29,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $phone = $mysqli->real_escape_string($_POST['phone']);
                 $social = $mysqli->real_escape_string($_POST['social']);
                 $politicalAffiliation = $mysqli->real_escape_string($_POST['politicalAffiliation']);
-
-
 				$email = $mysqli->real_escape_string($_POST['emailAddress']);
+
+				//Hash the password
 				$pass = md5($_POST['pass']);
 
-
+                //Check if the username is taken
 				$checkUsernameStatement = "SELECT username from users where username = " . "'$username'";
 				$usernameResult = $mysqli->query($checkUsernameStatement);
 
+				//Check if the email is taken
                 $checkEmailStatement = "SELECT email from users where email = " . "'$email'";
                 $emailResult = $mysqli->query($checkEmailStatement);
 
@@ -50,6 +51,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     //Display username is taken
                     $_SESSION['message'] .= " Username is already taken";
                 }
+
+                //If neither are taken, insert into our users table
 				if($usernameResult->num_rows == 0 && $emailResult->num_rows == 0){
 				    //Username and email not taken
                     $num = rand(100000,999999);
@@ -57,7 +60,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                         " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, '$num', '$bday', '$gender', '$address', '$city', '$state', '$id', '$social', '$politicalAffiliation', 0)";
 
                     if($mysqli->query($insertStatement) === true){
-                        $_SESSION['message'] = 'Registration successful! Added $username to the database!';
                         header("location: login.php");
                     } else {
                         $_SESSION['message'] = "User could not be added to the database";
