@@ -25,7 +25,7 @@ if(isset($_POST['logout'])){
     <form action = "welcome.php" method ="post" enctype="multipart/form-data">
     <li><input type="submit" name="logout" value = "Logout"></li>
     </form>
-
+    <li><a href="vote.php">Vote</a></li>
 </ul>
     </div>
     <script src="../js/jquery-3.3.1.js"></script>
