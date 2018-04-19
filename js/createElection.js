@@ -24,6 +24,7 @@ $(document).on('click','#addPrecinct',function(){
 
 });
 
+
 $('#candidateList').on('click','.deleteCandidate',function(){
     var removeLi = this.parentElement;
     var liParent = removeLi.parentElement;

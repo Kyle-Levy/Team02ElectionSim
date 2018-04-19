@@ -97,8 +97,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
                 <label>Gender:</label>
                     <input type = "radio" name ="gender" value ="male" required> Male<br>
-                    <input type = "radio" name ="gender" value ="female"> Female<br>
-                    <input type = "radio" name ="gender" value ="other"> Other<br>
+                    <input type = "radio" name ="gender" value ="female" required> Female<br>
+                    <input type = "radio" name ="gender" value ="other" required> Other<br>
                 <label>Home Address:</label>
                 <label>Address line 1:</label>
                     <input type="text" name="address1" required>

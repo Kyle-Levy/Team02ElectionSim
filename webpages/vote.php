@@ -26,7 +26,7 @@ if(isset($_SESSION['username'])) {
 
 
     //If there are elections for the user's precinct
-    if($result->num_rows >0) {
+    if ($result->num_rows > 0) {
 
         //Get all he elections
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -69,10 +69,10 @@ if(isset($_SESSION['username'])) {
          * }
          */
 
-        if(count($allElectionIDS) > 0){
+        if (count($allElectionIDS) > 0) {
 
             //Looking at all of the electionIDS
-            for($i = 0; $i < count($allElectionIDS); $i++){
+            for ($i = 0; $i < count($allElectionIDS); $i++) {
                 //Get the current electionID
                 $currentID = $allElectionIDS[$i];
 
@@ -97,14 +97,14 @@ if(isset($_SESSION['username'])) {
 
                 //Store all candidate info into an array and clear the name and party to be safe,
                 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                   $candidateName = $row['candidate'];
-                   $party = $row['party'];
+                    $candidateName = $row['candidate'];
+                    $party = $row['party'];
 
-                   $candidates[] = $candidateName;
-                   $candidates[] = $party;
+                    $candidates[] = $candidateName;
+                    $candidates[] = $party;
 
-                   unset($candidateName);
-                   unset($party);
+                    unset($candidateName);
+                    unset($party);
 
                 }
 
@@ -123,11 +123,35 @@ if(isset($_SESSION['username'])) {
             //All elections have been voted on
         }
 
-} else{
+    } else {
         //No elections available for your precinct/haven't even voted on any
+        
+    }
+
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //$name is the electionID and $val is the vote for that election
+        foreach ($_POST as $name => $val) {
+            $getCandidateVote = "SELECT votes,candidateID FROM electionCandidates WHERE (candidate = '$val' and electionID = '$name')";
+            $result = $mysqli->query($getCandidateVote);
+            $row = mysqli_fetch_assoc($result);
+            $votes = intval($row['votes']);
+            $votes = $votes + 1;
+            $canID = $row['candidateID'];
+
+            $updateCandidateVotes = "UPDATE electionCandidates SET votes='$votes' WHERE candidateID = '$canID'";
+            $mysqli->query($updateCandidateVotes);
+
+
+            $updateUserVotes = "INSERT INTO electionVotes (electionID, userID) VALUES ('$name','$userId')";
+
+
+            $mysqli->query($updateUserVotes);
+            header("location: welcome.php");
+    }
     }
 }
-
 
 
 ?>
@@ -144,6 +168,8 @@ if(isset($_SESSION['username'])) {
 
 
     </ul>
+
+    <input type="submit" value="Vote.">
 </form>
 
 <script src="../js/jquery-3.3.1.js"></script>
