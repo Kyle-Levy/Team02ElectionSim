@@ -64,7 +64,7 @@ if(isset($_SESSION['username'])) {
          *
          * have the electionID and get the name, start, and end date from elections table and put all 4 into an array ($electionInfo[])
          *
-         * use the electionID to get the candidates and their partys, evens are name, odds are party
+         * use the electionID to get the candidates and their party, evens are name, odds are party
          *
          * }
          */
@@ -125,7 +125,7 @@ if(isset($_SESSION['username'])) {
 
     } else {
         //No elections available for your precinct/haven't even voted on any
-        
+
     }
 
 
@@ -144,7 +144,7 @@ if(isset($_SESSION['username'])) {
             $mysqli->query($updateCandidateVotes);
 
 
-            $updateUserVotes = "INSERT INTO electionVotes (electionID, userID) VALUES ('$name','$userId')";
+            $updateUserVotes = "INSERT INTO electionVotes (electionID, userID, candidateID) VALUES ('$name','$userId','$canID')";
 
 
             $mysqli->query($updateUserVotes);

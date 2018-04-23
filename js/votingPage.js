@@ -21,16 +21,18 @@ for(var i = 0; i < allElections.length;i++){
     var electionID = allElections[i][0][0];
     var electionName = allElections[i][0][1];
     var electionStart = allElections[i][0][2];
+    var d = new Date(1997,0,18);
+    electionStart = d;
     var electionEnd = allElections[i][0][3];
     var message = '<h3>' + electionName + '</h3>' + '<div><label>Start: </label>'+ electionStart + '<label>End: </label>' + electionEnd +'</div>';
     outerLI.append(message);
     for(var j = 0; j < allElections[i][1].length;j+=2){
-        var name = allElections[i][1][j];
+        var candidateName = allElections[i][1][j];
         var party = allElections[i][1][j+1];
 
         var person = $('<input>').attr({
             type: "radio",
-            value: name,
+            value: candidateName,
             name: electionID,
             required: true
         });

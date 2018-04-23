@@ -17,9 +17,6 @@ $(document).on('click','#addCandidate',function(){
 
 $(document).on('click','#addPrecinct',function(){
 
-
-
-
     $('#precinctList').append('<li><input type ="text" name="precinct[]">' + '<input type = "image" src = "../resources/x.png" class ="deletePrecinct" alt ="button" width="25" height = "25" value = "Working" ></li>');
 
 });
