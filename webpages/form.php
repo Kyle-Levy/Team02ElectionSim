@@ -56,10 +56,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 				if($usernameResult->num_rows == 0 && $emailResult->num_rows == 0){
 				    //Username and email not taken
                     $num = rand(100000,999999);
-                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum, resetCode,birthday, gender, address, city, state, idNum, social, politicalParty, votingStatus)" .
-                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, '$num', '$bday', '$gender', '$address', '$city', '$state', '$id', '$social', '$politicalAffiliation', 0)";
+                    $hash = md5(rand(0,1000));
+
+                    $insertStatement = "INSERT INTO users (username, password, email, firstname, lastname, rolenum, resetCode,birthday, gender, address, city, state, idNum, social, politicalParty, votingStatus, hash)" .
+                                        " VALUES ('$username', '$pass', '$email', '$firstname', '$lastname', 0, '$num', '$bday', '$gender', '$address', '$city', '$state', '$id', '$social', '$politicalAffiliation', 0, '$hash')";
 
                     if($mysqli->query($insertStatement) === true){
+                        //Send hash email
+                        $mail = new PHPMailer();
+                        $mail->isSMTP();
+                        $mail->SMTPAuth = true;
+                        $mail->SMTPSecure = 'ssl';
+                        $mail->Host = 'smtp.gmail.com';
+                        $mail->Port = '465';
+                        $mail->isHTML();
+                        $mail->Username = 'Team02ElectionSim@gmail.com';
+                        $mail->Password = 'kylekelseytyler';
+                        $mail->Subject = 'Verify your account';
+                        $mail->Body = 'Click here to verify your account: http://localhost/webpages/verify.php?email='.$email.'&hash='.$hash;
+                        $mail->AddAddress($email);
+
+                        if(!$mail->send()) {
+                            echo 'Message was not sent.';
+                            echo 'Mailer error: ' . $mail->ErrorInfo;
+                        } else {
+                            echo 'Message has been sent.';
+                            $_SESSION['email'] = $email;
+                            header("location: passReset.php");
+                        }
+
+                        /////////////////
                         header("location: login.php");
                     } else {
                         $_SESSION['message'] = "User could not be added to the database";

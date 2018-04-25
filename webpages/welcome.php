@@ -14,8 +14,34 @@ if(isset($_POST['logout'])){
 <html>
 <head>
     <link href="../styles/homepage.css" type ="text/css" rel="stylesheet" />
+    <style type="text/css">
+        nav, footer {
+            clear: both;
+            color: #ffffff;
+            background-color: #aeaca8;
+            height: 30px;}
+        nav ul {
+            margin: 0px;
+            padding: 5px 0px 5px 30px;}
+        nav li {
+            display: inline;
+            margin-right: 40px;}
+        nav li  {color: #ffffff;}
+        nav li a:hover, li.current{
+            color: #000000;}
+        a {
+            text-decoration: none;}
+    </style>
+
 </head>
     <body>
+    <nav>
+        <ul id="navBarList">
+            <li class="current"><a href="welcome.php">Homepage</a></li>
+            <li>Next</li>
+            <li>Last</li>
+        </ul>
+    </nav>
     <div id = "page">
 <div>Welcome <?= $_SESSION['username']?>!</div>
 <p id="roleNum"><?= $_SESSION['role']?></p>

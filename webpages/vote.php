@@ -72,9 +72,7 @@ if(isset($_SESSION['username'])) {
         if (count($allElectionIDS) > 0) {
 
             //Looking at all of the electionIDS
-            for ($i = 0; $i < count($allElectionIDS); $i++) {
-                //Get the current electionID
-                $currentID = $allElectionIDS[$i];
+            foreach($allElectionIDS as $currentID) {
 
                 //Grab all of the info about current election
                 $electionInfoQuery = "SELECT * FROM elections WHERE electionID = '$currentID'";

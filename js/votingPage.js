@@ -26,6 +26,7 @@ for(var i = 0; i < allElections.length;i++){
     var electionEnd = allElections[i][0][3];
     var message = '<h3>' + electionName + '</h3>' + '<div><label>Start: </label>'+ electionStart + '<label>End: </label>' + electionEnd +'</div>';
     outerLI.append(message);
+
     for(var j = 0; j < allElections[i][1].length;j+=2){
         var candidateName = allElections[i][1][j];
         var party = allElections[i][1][j+1];
@@ -37,15 +38,10 @@ for(var i = 0; i < allElections.length;i++){
             required: true
         });
 
-        var tail = name + '     '  + party +'<br>';
+        var tail = candidateName + '     '  + party +'<br>';
         outerLI.append(person);
         outerLI.append(tail);
     }
 
     $('#electionList').append(outerLI);
 }
-
-/*
-for(var i=0; i<test.length;i++){
-$('#tester').append('<li>' +test[i]+ '</li>');
-}*/

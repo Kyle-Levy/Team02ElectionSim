@@ -1,4 +1,4 @@
-var usersArr = allUsers;
+var usersArr = allUsersManager;
 
 for(var i = 0; i<usersArr.length;i++){
     var outerTR = $('<tr></tr>');
