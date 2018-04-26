@@ -25,6 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     foreach ($_POST as $name => $val) {
         $changeVotingStatus = "UPDATE users SET votingStatus = 1 where id = $name";
         $mysqli->query($changeVotingStatus);
+        header("location: welcome.php");
     }
 }
 

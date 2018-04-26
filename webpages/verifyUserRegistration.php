@@ -1,7 +1,8 @@
 <?php
 session_start();
-
+require_once ('../PHPMailer/PHPMailerAutoload.php');
 $mysqli = new mysqli('team02electionsim.cd0yrfnixnjv.us-east-2.rds.amazonaws.com', 'Team02Member', 'secret', 'Team02ElectionSim');
+
 
 if(isset($_SESSION['username']) && intval($_SESSION['role']) > 1) {
     //Query all users with voting status of 0 (will only allow checkbox if 1 for verifiedByAdmin and 1 for activatedByEmail)  and get (firstName, lastName, idNum, social, )
@@ -23,10 +24,56 @@ if(isset($_SESSION['username']) && intval($_SESSION['role']) > 1) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     foreach ($_POST as $name => $val) {
-        $changeVotingStatus = "UPDATE users SET verifiedByAdmin = 1 where id = $name";
-        $mysqli->query($changeVotingStatus);
+        $valNum = intval($val);
+
+        if ($valNum == 1 || $valNum == -1) {
+        $getUserEmail = "SELECT email FROM users WHERE id = '$name'";
+        $result = $mysqli->query($getUserEmail);
+
+        $row = mysqli_fetch_assoc($result);
+        $email = $row['email'];
+
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = '465';
+            $mail->isHTML();
+            $mail->Username = 'Team02ElectionSim@gmail.com';
+            $mail->Password = 'kylekelseytyler';
+            $mail->AddAddress($email);
+
+            $mail->Subject = 'Admin Verification';
+
+
+
+
+
+        if ($valNum == 1) {
+            $changeVotingStatus = "UPDATE users SET verifiedByAdmin = 1 where id = '$name'";
+            if($mysqli->query($changeVotingStatus)){
+                $mail->Body = 'Your account has been verified';
+            }
+
+        } else if ($valNum == -1) {
+            //delete
+            $mail->Body = 'You have been denied';
+        }
+
+            if(!$mail->send()) {
+                echo 'Message was not sent.';
+                echo 'Mailer error: ' . $mail->ErrorInfo;
+            } else {
+                echo 'Message has been sent.';
+                $_SESSION['email'] = $email;
+            }
+
+            }
     }
-}
+    header("location:welcome.php");
+    }
+
 
 ?>
 
