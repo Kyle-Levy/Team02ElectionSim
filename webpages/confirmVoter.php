@@ -51,6 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             background-color: #dddddd;
         }
     </style>
+    <link href="../styles/table.css" type="text/css" rel="stylesheet"/>
     <link href="../styles/navbar.css" type="text/css" rel="stylesheet"/>
 </head>
 

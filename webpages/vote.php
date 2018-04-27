@@ -158,7 +158,8 @@ else {
 
 <html>
 <head>
-
+    <link href="../styles/votingPage.css" type="text/css" rel="stylesheet"/>
+    <link href="../styles/table.css" type="text/css" rel="stylesheet"/>
     <link href="../styles/navbar.css" type="text/css" rel="stylesheet"/>
 </head>
 
@@ -182,11 +183,54 @@ else {
 <form action = "vote.php" method = "post" enctype="multipart/form-data" id="votingForm">
     <ul id="electionList">
 
+    <li><table class="election">
+            <tr>
+                <th colspan="3">Election Name</th>
+            </tr>
 
+            <tr>
+                <th colspan="3">Start Date: mm/dd/yyyy <br> End Date: mm/dd/yyyy</th>
+
+            </tr>
+            <tr>
+                <th>Candidate Name</th>
+                <th>Candidate Party</th>
+                <th>Vote</th>
+            </tr>
+            <tr>
+                <td>Person A</td>
+                <td>Democrat</td>
+                <td><input type="radio"></td>
+            </tr>
+        </table></li>
+
+        <li><table>
+                <tr>
+                    <th>Election Name</th>
+                </tr>
+
+                <tr>
+                    <th>Start Date: mm/dd/yyyy</th>
+                    <th>End Date: mm/dd/yyyy</th>
+                </tr>
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Candidate Party</th>
+                    <th>Vote</th>
+                </tr>
+                <tr>
+                    <td>Person B</td>
+                    <td>Republican</td>
+                    <td><input type="radio"></td>
+                </tr>
+            </table></li>
     </ul>
 
     <input type="submit" value="Vote.">
 </form>
+
+
+
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
