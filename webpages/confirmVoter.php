@@ -51,8 +51,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             background-color: #dddddd;
         }
     </style>
+    <link href="../styles/navbar.css" type="text/css" rel="stylesheet"/>
 </head>
+
 <body>
+<header>
+    <div class = "container">
+
+        <img src="../resources/Team02Logo.png" alt="logo" class="logo">
+
+        <nav>
+            <ul id="navBarList">
+                <li class="all"><a href="welcome.php">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+    <p id="roleNum"><?= $_SESSION['role']?></p>
+    <p id="votingStatus"><?= $_SESSION['votingStatus']?></p>
+</header>
+
 <form form action = "confirmVoter.php" method = "post" enctype="multipart/form-data" id="checkboxForm">
 <table id="userTable">
 <tr>
@@ -74,5 +91,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     var allUsersManager = <?php echo json_encode($allUsers); ?>;
 </script>
 <script src="../js/confirmVoter.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

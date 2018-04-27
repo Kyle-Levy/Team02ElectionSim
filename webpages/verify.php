@@ -1,4 +1,6 @@
 <?php
+//Used to verify user registration via email
+
 session_start();
 
 if(isset($_GET['email']) && isset($_GET['hash'])){

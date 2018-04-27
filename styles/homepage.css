@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-body{
-    background-color: #e5d0cc;
-    font-family: 'Ubuntu', sans-serif;
-}
 
 #page {
     background-color: #7f7b82;
@@ -12,9 +8,11 @@ body{
     text-align: left;
 }
 
-#roleNum{
+#roleNum, #votingStatus{
     display:none;
 }
+
+
 
 .column {
     float: left;

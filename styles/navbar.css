@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body{
+    margin: 0;
+    background: #fdf6e3;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight:300;
+}
+
+.logo{
+    float: left;
+    max-width: 200px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    pading: 10px 0 10px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background: #bdf1ed;
+}
+
+header::after{
+    content: '';
+    display: table;
+    clear:  both;
+}
+
+nav{
+    float: right;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left:35px;
+    padding-top: 25px;
+
+    position: relative;
+}
+
+nav a{
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: #000;
+}
+
+nav a::before{
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #444;
+
+    position: absolute;
+    top: 0;
+    width: 0%;
+
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+button{
+    background: none;
+    color: inherit;
+    border:none;
+    padding:0;
+    font: inherit;
+    cursor: pointer;
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+button:hover{
+    color: #000;
+}
+
+button::before{
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #444;
+
+    position: absolute;
+    top: 0;
+    width: 0%;
+
+    transition: all ease-in-out 250ms;
+}
+
+button:hover::before{
+    width: 100%;
+}
+
+#roleNum, #votingStatus{
+    display:none;
+}

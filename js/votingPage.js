@@ -21,6 +21,8 @@ for(var i = 0; i < allElections.length;i++){
     var electionID = allElections[i][0][0];
     var electionName = allElections[i][0][1];
     var electionStart = allElections[i][0][2];
+    //TODO only show election if today's date is inbetween the two elections.
+
     var d = new Date(1997,0,18);
     electionStart = d;
     var electionEnd = allElections[i][0][3];
