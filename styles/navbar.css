@@ -13,6 +13,8 @@ body{
     max-height: 50px;
     width: auto;
     height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     pading: 10px 0 10px 0;
 }
 
@@ -77,7 +79,7 @@ nav a:hover::before {
     width: 100%;
 }
 
-button{
+#logout{
     background: none;
     color: inherit;
     border:none;
@@ -89,11 +91,11 @@ button{
     text-transform: uppercase;
 }
 
-button:hover{
+#logout:hover{
     color: #000;
 }
 
-button::before{
+#logout::before{
     content: '';
     display: block;
     height: 5px;
@@ -107,7 +109,7 @@ button::before{
     transition: all ease-in-out 250ms;
 }
 
-button:hover::before{
+#logout:hover::before{
     width: 100%;
 }
 

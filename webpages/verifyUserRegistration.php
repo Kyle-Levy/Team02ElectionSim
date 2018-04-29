@@ -22,6 +22,7 @@ if(isset($_SESSION['username']) && intval($_SESSION['role']) > 1) {
 
 }
 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     foreach ($_POST as $name => $val) {
         $valNum = intval($val);
@@ -59,6 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         } else if ($valNum == -1) {
             //delete
             $mail->Body = 'You have been denied';
+
         }
 
             if(!$mail->send()) {
@@ -113,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     </table>
 
-    <input type="submit" value="Submit Changes">
+    <button type="submit" class="submit"><span>Submit Changes</span></button>
 </form>
 
 <script src="../js/jquery-3.3.1.js"></script>

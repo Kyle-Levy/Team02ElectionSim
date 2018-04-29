@@ -8,7 +8,7 @@
     text-align: left;
 }
 
-#roleNum, #votingStatus{
+#roleNum, #votingStatus, #verifiedStatus, #emailStatus{
     display:none;
 }
 

@@ -73,7 +73,6 @@ $mysqli = new mysqli('team02electionsim.cd0yrfnixnjv.us-east-2.rds.amazonaws.com
                         <a href="forgotPassword.php">Forgot Password?</a>
                 </div>
         </form>
-	<p id="tester"></p>
 			<script src="../js/jquery-3.3.1.js"></script>
 	</body>
 

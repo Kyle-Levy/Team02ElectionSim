@@ -17,56 +17,53 @@ allElections[#][1][Odd  #] = candidateParty
 
 //Processing allElections array into a form
 for(var i = 0; i < allElections.length;i++){
-    var outerLI = $("<li></li>");
-    var electionDiv = $('<table class="election"></table>');
-    var electionID = allElections[i][0][0];
-    var electionName = allElections[i][0][1];
+
     var electionStart = allElections[i][0][2];
-    electionStart = makeDate(electionStart).toDateString();
-
-    //TODO only show election if today's date is inbetween the two elections.
-
+    electionStart = makeDate(electionStart);
     var electionEnd = allElections[i][0][3];
-    var message = '<h3>' + electionName + '</h3>' + '<div><label>Start: </label>'+ electionStart + '<label>End: </label>' + electionEnd +'</div>';
-    electionDiv.append(message);
+    electionEnd = makeDate(electionEnd);
 
-    //Add all candidates
-    for(var j = 0; j < allElections[i][1].length;j+=2){
-        var candidateName = allElections[i][1][j];
-        var party = allElections[i][1][j+1];
+    if(currentlyRunning(new Date(),electionStart, electionEnd)) {
+        var electionTable = $('<table class="election"></table>');
+        var electionID = allElections[i][0][0];
 
-        var person = $('<input>').attr({
-            type: "radio",
-            value: candidateName,
-            name: electionID,
-            required: true
-        });
+        var electionName = allElections[i][0][1];
+        var electionNameTR = $('<tr></tr>').append('<th colspan="3">' + electionName + '</th>')
+        electionTable.append(electionNameTR);
 
-        var tail = candidateName + '     '  + party +'<br>';
-        electionDiv.append(person);
-        electionDiv.append(tail);
-        outerLI.append(electionDiv);
+        var startDate = "Start Date: " + electionStart.toDateString();
+        var endDate = "End Date: " + electionEnd.toDateString();
+        var datesTR = $('<tr></tr>').append('<th colspan="3">' +
+            startDate + '<br>' + endDate + '</th>');
+        electionTable.append(datesTR);
+
+        var columnTitles = $('<tr></tr>');
+        columnTitles.append('<th>Candidate Name</th>');
+        columnTitles.append('<th>Candidate Party</th>');
+        columnTitles.append('<th>Vote</th>');
+        electionTable.append(columnTitles);
+
+        //Add all candidates
+        for (var j = 0; j < allElections[i][1].length; j += 2) {
+            var candidateName = allElections[i][1][j];
+            var party = allElections[i][1][j + 1];
+
+            var person = $('<input>').attr({
+                type: "radio",
+                value: candidateName,
+                name: electionID,
+                required: true
+            });
+
+            var candidateTR = $('<tr></tr>');
+            candidateTR.append('<td>' + candidateName +'</td>');
+            candidateTR.append('<td>' + party + '</td>');
+            candidateTR.append(person);
+            electionTable.append(candidateTR);
+        }
+
+        $('#electionList').append(electionTable);
     }
-
-    $('#electionList').append(outerLI);
-}
-
-function getDate(){
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd = '0'+dd
-    }
-
-    if(mm<10) {
-        mm = '0'+mm
-    }
-
-    today = mm + '/' + dd + '/' + yyyy;
-    var check = new Date()
 }
 
 function makeDate(mySQLDate){
@@ -80,4 +77,8 @@ function makeDate(mySQLDate){
     var returnDate = new Date (yyyy,mm,dd);
 
     return returnDate
+}
+
+function currentlyRunning(currentDate, startDate, endDate){
+    return(currentDate >= startDate && currentDate < endDate)
 }

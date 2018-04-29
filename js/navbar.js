@@ -18,7 +18,7 @@ if(roleNum >=2){
 }
 
 var logout = '<li><form action = "welcome.php" method ="post" enctype="multipart/form-data">' +
-    '<button type="submit" class="logout" name="logout" value = "Logout">Logout</button>' +
+    '<button type="submit" id="logout" name="logout" value = "Logout">Logout</button>' +
     '</form></li>';
 
 

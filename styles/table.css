@@ -4,11 +4,11 @@ table {
     width: 100%;
     table-layout: auto;
     width: 180px;
-    margin-top: 25px;
+    margin: 20px 0px 0px 20px;
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #000;
     text-align: left;
     padding: 8px;
 }
@@ -18,13 +18,54 @@ tr:nth-child(even) {
 }
 
 tr:hover{
-    background-color: #a49aa3;
+    background-color: #AAA;
 }
 
 th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #2265af;
+    background-color: #74bcab;
     color: white;
+}
+
+.submit {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #12d455;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+    padding: 15px;
+    width: 160px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px 0 0 20px;
+
+}
+
+.submit span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.submit span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.submit:hover span {
+    padding-right: 25px;
+}
+
+.submit:hover span:after {
+    opacity: 1;
+    right: 0;
 }

@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 </table>
 
-    <input type="submit" value="Submit Changes">
+    <button type="submit" class="submit"><span>Submit Changes</span></button>
 </form>
 
 <script src="../js/jquery-3.3.1.js"></script>
