@@ -1,6 +1,9 @@
 var navBar = $('#navBarList');
 var roleNum = $('#roleNum').text();
 var votingStatus = $('#votingStatus').text();
+
+navBar.append("<li><a href='changePassword.php' class='user'>Change Password</a></li>");
+
 //All users can vote
 if(roleNum >= 0 && votingStatus >0){
     navBar.append("<li><a href='vote.php' class='user'>Vote</a></li>");

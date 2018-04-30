@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type ="submit" value ="Change Password" id = "changePass">
     </div>
 </form>
-
+<script src="../js/navbar.js"></script>
 </body>
 
 </html>

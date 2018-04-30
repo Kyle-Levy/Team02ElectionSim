@@ -57,10 +57,12 @@ if(isset($_POST['logout'])){
 <div>Welcome <?= $_SESSION['username']?>!</div>
         <p id="verifiedStatus"><?=$_SESSION['verifiedByAdmin']?></p>
         <p id="emailStatus"><?=$_SESSION['activatedByEmail']?></p>
-<ul>
+<ul id="status">
+
 </ul>
     </div>
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/homepageStatus.js"></script>
 </body>
 </html>

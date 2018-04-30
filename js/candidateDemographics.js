@@ -44,7 +44,7 @@ if(allInfo != null){
     for(var i = 0; i< userArr.length; i++){
         userVoteList.append('<li>' + userArr[i] + '</li>')
     }
-
+    candidateDiv.append('<h3>UserIDs:</h3>');
     candidateDiv.append(userVoteList);
 
 
