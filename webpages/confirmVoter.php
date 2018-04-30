@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <p id="votingStatus"><?= $_SESSION['votingStatus']?></p>
 </header>
 
-<form form action = "confirmVoter.php" method = "post" enctype="multipart/form-data" id="checkboxForm">
+<form action = "confirmVoter.php" method = "post" enctype="multipart/form-data" id="checkboxForm">
 <table id="userTable">
 <tr>
     <th>User ID</th>

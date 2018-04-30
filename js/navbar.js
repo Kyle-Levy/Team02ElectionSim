@@ -14,6 +14,8 @@ if(roleNum >=1){
 if(roleNum >=2){
     navBar.append("<li><a href='verifyUserRegistration.php' class='admin'>Verify Voter</a></li>");
     navBar.append("<li><a href='createElection.php' class='admin'>Create Election</a></li>");
+    navBar.append("<li><a href='electionDemographics.php' class='admin'>Election Demographics</a></li>");
+    navBar.append("<li><a href='candidateDemographics.php' class='admin'>Candidate Demographics</a>")
     //Creates elections and verifies registration manually
 }
 

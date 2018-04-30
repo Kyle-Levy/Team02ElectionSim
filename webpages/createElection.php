@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div id = "page">
     <p><?=$_SESSION['message']?></p>
-    <div>Create an election</div>
+    <h3>Create an election</h3>
     <br>
     <p id="roleNum"><?= $_SESSION['role']?></p>
     <form action = "createElection.php" method ="post" enctype="multipart/form-data">
